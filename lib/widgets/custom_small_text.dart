@@ -13,7 +13,7 @@ class CustomSmallText extends StatelessWidget {
     required this.text,
     this.color = const Color(0xFFccc7c5),
     this.fontSize = 12,
-    this.height=1.2,
+    this.height = 1.2,
   }) : super(key: key);
 
   @override

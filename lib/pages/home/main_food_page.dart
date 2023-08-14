@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/home/food_page_body.dart';
+import 'package:food_delivery_app/pages/home/food_page_body.dart';
 import 'package:food_delivery_app/utils/colors.dart';
+import 'package:food_delivery_app/utils/dimensions.dart';
 import 'package:food_delivery_app/widgets/custom_big_text.dart';
 import 'package:food_delivery_app/widgets/custom_small_text.dart';
 
@@ -14,20 +15,22 @@ class MainFoodPage extends StatefulWidget {
 class _MainFoodPageState extends State<MainFoodPage> {
   @override
   Widget build(BuildContext context) {
+    print('Cuurent height :' + MediaQuery.of(context).size.height.toString());
+    print('Cuurent Wight :' + MediaQuery.of(context).size.width.toString());
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            // Header 
+            // Showing the Header
             Container(
               child: Container(
                 margin: EdgeInsets.only(
-                  top: 20,
-                  bottom: 20,
+                  top: Dimensions.merginTop20,
+                  bottom: Dimensions.merginBottom20,
                 ),
                 padding: EdgeInsets.only(
-                  left: 20,
-                  right: 20,
+                  left: Dimensions.paddingLeft20,
+                  right: Dimensions.paddingRight20,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,15 +56,17 @@ class _MainFoodPageState extends State<MainFoodPage> {
                     ),
                     Center(
                       child: Container(
-                        width: 45,
-                        height: 45,
+                        width: Dimensions.wight45,
+                        height: Dimensions.height45,
                         decoration: BoxDecoration(
                           color: AppColors.mainColor,
-                          borderRadius: BorderRadius.all(Radius.circular(15.0)),
+                          borderRadius: BorderRadius.all(
+                              Radius.circular(Dimensions.radiust15)),
                         ),
                         child: Icon(
                           Icons.search,
                           color: Colors.white,
+                          size: Dimensions.icon24,
                         ),
                       ),
                     ),
@@ -69,8 +74,13 @@ class _MainFoodPageState extends State<MainFoodPage> {
                 ),
               ),
             ),
-            // Food Page Body
-            FoodPageBody(),
+            // Showing the Food Page Body
+            Expanded(
+              child: SingleChildScrollView(
+                child: FoodPageBody(),
+              ),
+            ),
+            // Showing ??
           ],
         ),
       ),
