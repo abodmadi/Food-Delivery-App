@@ -5,6 +5,7 @@ import 'package:food_delivery_app/utils/dimensions.dart';
 import 'package:food_delivery_app/widgets/custom_app_column.dart';
 import 'package:food_delivery_app/widgets/custom_app_icon.dart';
 import 'package:food_delivery_app/widgets/custom_big_text.dart';
+import 'package:food_delivery_app/widgets/custom_expandable_text.dart';
 
 class PopularFoodDetail extends StatelessWidget {
   const PopularFoodDetail({super.key});
@@ -75,10 +76,22 @@ class PopularFoodDetail extends StatelessWidget {
                     fontSize: Dimensions.font24,
                   ),
                   SizedBox(
-                    height: Dimensions.height20,
+                    height: Dimensions.height10,
                   ),
                   CustomBigText(
                     text: 'Introduce',
+                  ),
+                  SizedBox(
+                    height: Dimensions.height10,
+                  ),
+                  // Showing the Expandable Text
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: CustomExpandableText(
+                        text:
+                            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa nisi iure nam recusandae dignissimos ab natus enim perferendis obcaecati sint cumque autem nemo quas neque, libero minima temporibus blanditiis possimus odio fugiat commodi! Suscipit quod at corrupti beatae voluptates, soluta maiores dolores sint harum numquam error. Repellat cumque, soluta eos mollitia, atque architecto laboriosam eius amet quo accusamus quidem quibusdam expedita assumenda deleniti, placeat distinctio libero vero fugiat magni provident. Fugit nemo dolor sunt non deleniti? Alias eaque, modi qui deleniti natus assumenda.',
+                      ),
+                    ),
                   ),
                 ],
               ),
@@ -90,8 +103,8 @@ class PopularFoodDetail extends StatelessWidget {
       // Showing the Button NavigationBar
       bottomNavigationBar: Container(
         padding: EdgeInsets.only(
-          bottom: Dimensions.height30,
-          top: Dimensions.height30,
+          bottom: Dimensions.height20,
+          top: Dimensions.height20,
           left: Dimensions.height20,
           right: Dimensions.height20,
         ),
@@ -115,7 +128,7 @@ class PopularFoodDetail extends StatelessWidget {
                 left: Dimensions.height10,
               ),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.radiust20),
+                borderRadius: BorderRadius.circular(Dimensions.radiust10),
                 color: Colors.white,
               ),
               child: Row(
@@ -149,7 +162,7 @@ class PopularFoodDetail extends StatelessWidget {
                 left: Dimensions.height10,
               ),
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.radiust20),
+                borderRadius: BorderRadius.circular(Dimensions.radiust10),
                 color: AppColors.mainColor,
               ),
               child: CustomBigText(

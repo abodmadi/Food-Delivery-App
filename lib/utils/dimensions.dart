@@ -40,6 +40,7 @@ class Dimensions {
   static double font20 = screenHeight / 39.05;
   static double font24 = screenHeight / 32.54;
 // Showing the Radius Factors
+  static double radiust10 = screenHeight / 78.10;
   static double radiust15 = screenHeight / 52.06;
   static double radiust20 = screenHeight / 39.05;
   static double radiust30 = screenHeight / 26.03;
@@ -52,7 +53,7 @@ class Dimensions {
 // Showing the Popular Food Factors
   static double popularFoodImageSize = screenHeight / 2.23;
 // Showing the Popular Food Details Factors
-  static double popularFoodNavBarSize = screenHeight / 6.50;
+  static double popularFoodNavBarSize = screenHeight / 7.81;
 
 // Showing the ?? Factors
 }
