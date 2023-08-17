@@ -45,8 +45,8 @@ class Dimensions {
   static double radiust20 = screenHeight / 39.05;
   static double radiust30 = screenHeight / 26.03;
 // Showing the Icon Factors
-  static double icon16 = screenHeight / 48.81;
-  static double icon24 = screenHeight / 32.54;
+  static double iconSize16 = screenHeight / 48.81;
+  static double iconSize24 = screenHeight / 32.54;
 // Showing the List View Size Factors
   static double listViewImageSize = screenWidth / 3.42;
   static double listViewTextContSize = screenWidth / 4.11;
@@ -54,6 +54,9 @@ class Dimensions {
   static double popularFoodImageSize = screenHeight / 2.23;
 // Showing the Popular Food Details Factors
   static double popularFoodNavBarSize = screenHeight / 7.81;
-
+// Showing the Recommended Food Details Factors
+  static double toolbarHeight80 = screenHeight / 9.76;
+  static double expandedHeigth300 = screenHeight / 2.60;
+// Showing the ?? Factors
 // Showing the ?? Factors
 }

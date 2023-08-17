@@ -7,6 +7,7 @@ class CustomAppIcon extends StatelessWidget {
   final Color iconColor;
   final Color backColor;
   final double size;
+  final double iconSize;
   //final double backSize;
 
   const CustomAppIcon({
@@ -15,7 +16,7 @@ class CustomAppIcon extends StatelessWidget {
     this.iconColor = const Color(0xFF756d54),
     this.backColor = const Color(0xFFfcf4e4),
     this.size = 40,
-    //this.backSize = 50,
+    this.iconSize = 16,
   });
 
   @override
@@ -24,11 +25,14 @@ class CustomAppIcon extends StatelessWidget {
       width: size,
       height: size,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(size/2),
+        borderRadius: BorderRadius.circular(size / 2),
         color: backColor,
       ),
-      child: Icon( icon,
-      color: iconColor,size: Dimensions.icon16,),
+      child: Icon(
+        icon,
+        color: iconColor,
+        size: iconSize,
+      ),
     );
   }
 }

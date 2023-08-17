@@ -61,12 +61,13 @@ class _MainFoodPageState extends State<MainFoodPage> {
                         decoration: BoxDecoration(
                           color: AppColors.mainColor,
                           borderRadius: BorderRadius.all(
-                              Radius.circular(Dimensions.radiust15)),
+                            Radius.circular(Dimensions.radiust15),
+                          ),
                         ),
                         child: Icon(
                           Icons.search,
                           color: Colors.white,
-                          size: Dimensions.icon24,
+                          size: Dimensions.iconSize24,
                         ),
                       ),
                     ),

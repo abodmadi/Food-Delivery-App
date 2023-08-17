@@ -21,7 +21,7 @@ class CustomTextIcon extends StatelessWidget {
         Icon(
           icon,
           color: iconColor,
-          size: Dimensions.icon24,
+          size: Dimensions.iconSize24,
         ),
         SizedBox(
           width: 3,
