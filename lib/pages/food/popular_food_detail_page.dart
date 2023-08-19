@@ -1,17 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:food_delivery_app/controllers/popular_product_controller.dart';
+import 'package:food_delivery_app/models/product_model.dart';
+import 'package:food_delivery_app/pages/home/main_food_page.dart';
+import 'package:food_delivery_app/route/route_helper.dart';
+import 'package:food_delivery_app/utils/app_constants.dart';
 import 'package:food_delivery_app/utils/colors.dart';
 import 'package:food_delivery_app/utils/dimensions.dart';
 import 'package:food_delivery_app/widgets/custom_app_column.dart';
 import 'package:food_delivery_app/widgets/custom_app_icon.dart';
 import 'package:food_delivery_app/widgets/custom_big_text.dart';
 import 'package:food_delivery_app/widgets/custom_expandable_text.dart';
+import 'package:get/get.dart';
 
 class PopularFoodDetailPage extends StatelessWidget {
-  const PopularFoodDetailPage({super.key});
+  final int pageId;
+  const PopularFoodDetailPage({
+    super.key,
+    required this.pageId,
+  });
 
   @override
   Widget build(BuildContext context) {
+    ProductModel product =
+        Get.find<PopularProductController>().popularProductList[pageId];
     return Scaffold(
       backgroundColor: Colors.white,
       // Showing the Stack
@@ -27,7 +39,7 @@ class PopularFoodDetailPage extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage('assets/image/food0.png'),
+                  image: NetworkImage(AppConstants.BASE_URL+AppConstants.UPLOADS_URI+product.img!),
                 ),
               ),
             ),
@@ -40,8 +52,13 @@ class PopularFoodDetailPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                CustomAppIcon(
-                  icon: Icons.arrow_back_ios,
+                GestureDetector(
+                  onTap: () {
+                    Get.toNamed(RouteHelper.getInitial());
+                  },
+                  child: CustomAppIcon(
+                    icon: Icons.arrow_back_ios,
+                  ),
                 ),
                 CustomAppIcon(
                   icon: Icons.shopping_cart_outlined,
@@ -72,7 +89,7 @@ class PopularFoodDetailPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CustomAppColumn(
-                    text: 'Chinese Side',
+                    text: product.name!,
                     fontSize: Dimensions.font24,
                   ),
                   SizedBox(
@@ -88,8 +105,7 @@ class PopularFoodDetailPage extends StatelessWidget {
                   Expanded(
                     child: SingleChildScrollView(
                       child: CustomExpandableText(
-                        text:
-                            'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa nisi iure nam recusandae dignissimos ab natus enim perferendis obcaecati sint cumque autem nemo quas neque, libero minima temporibus blanditiis possimus odio fugiat commodi! Suscipit quod at corrupti beatae voluptates, soluta maiores dolores sint harum numquam error. Repellat cumque, soluta eos mollitia, atque architecto laboriosam eius amet quo accusamus quidem quibusdam expedita assumenda deleniti, placeat distinctio libero vero fugiat magni provident. Fugit nemo dolor sunt non deleniti? Alias eaque, modi qui deleniti natus assumenda.',
+                        text:product.description!,
                       ),
                     ),
                   ),
@@ -166,7 +182,7 @@ class PopularFoodDetailPage extends StatelessWidget {
                 color: AppColors.mainColor,
               ),
               child: CustomBigText(
-                text: '\$10 | Add to cart',
+                text: '\$${product.price!} | Add to cart',
                 color: Colors.white,
               ),
             ),

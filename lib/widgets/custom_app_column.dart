@@ -11,7 +11,7 @@ class CustomAppColumn extends StatelessWidget {
   CustomAppColumn({
     super.key,
     required this.text,
-    this.fontSize=0,
+    this.fontSize = 0,
   });
 
   @override
