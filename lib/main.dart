@@ -9,6 +9,7 @@ import 'package:food_delivery_app/route/route_helper.dart';
 import 'package:get/get.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'helper/dependencies.dart' as dep;
+import 'pages/cart/cart_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

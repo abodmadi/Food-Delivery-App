@@ -68,4 +68,6 @@ class ProductModel {
     updatedAt = json['updated_at'];
     typeId = json['type_id'];
   }
+
+  get quantity => null;
 }
