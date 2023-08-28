@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controllers/popular_product_controller.dart';
 import 'package:food_delivery_app/controllers/recommended_product_controller.dart';
 import 'package:food_delivery_app/models/product_model.dart';
-import 'package:food_delivery_app/pages/food/popular_food_detail_page.dart';
+//import 'package:food_delivery_app/pages/food/popular_food_detail_page.dart';
 import 'package:food_delivery_app/route/route_helper.dart';
 import 'package:food_delivery_app/utils/app_constants.dart';
 import 'package:food_delivery_app/utils/colors.dart';
@@ -43,6 +43,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
 
   @override
   void dispose() {
+    super.dispose();
     pageController.dispose();
   }
 
@@ -145,7 +146,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          Get.toNamed(RouteHelper.getRecommendedFood(index));
+                          Get.toNamed(RouteHelper.getRecommendedFood(index,'HomePage'));
                         },
                         child: Container(
                           margin: EdgeInsets.only(
@@ -292,7 +293,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           // Meal Photo Container
           GestureDetector(
             onTap: () {
-              Get.toNamed(RouteHelper.getPopularFood(index));
+              Get.toNamed(RouteHelper.getPopularFood(index,'HomePage'));
             },
             child: Container(
               height: Dimensions.pageViewContainer,

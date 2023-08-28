@@ -88,6 +88,14 @@ class CartController extends GetxController {
       .map((MapEntry<int, CartModel> item) => item.value)
       .toList();
 
+  int get totalItemsAmount {
+    var totalAmount = 0;
+    _items.forEach((int key, CartModel cartItem) {
+      totalAmount += (cartItem.price! * cartItem.quantity!);
+    });
+    return totalAmount;
+  }
+
   ///
   ///
 }

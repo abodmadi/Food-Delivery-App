@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 class ApiClient extends GetConnect implements GetxService {
   late String token; // Talk with server
   final String appBaseUrl; // Applecation Url need it to talk with server
+  // ignore: unused_field
   late Map<String, String> _mainHeaders;
   ApiClient({required this.appBaseUrl}) {
     baseUrl = appBaseUrl;

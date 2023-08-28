@@ -34,31 +34,33 @@ class _CustomExpandableTextState extends State<CustomExpandableText> {
   }
 
   @override
-  void dispose() {}
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       child: sacoundHalf.isEmpty
           ? CustomSmallText(
-            color: AppColors.paraColor,
-            height: 1.5,
-            fontSize: Dimensions.font15,
+              color: AppColors.paraColor,
+              height: 1.5,
+              fontSize: Dimensions.font15,
               text: firstHalf,
             )
           : Column(
               children: [
                 CustomSmallText(
-                  height: 1.5,
-                  color: AppColors.paraColor,
-                  fontSize: Dimensions.font15,
+                    height: 1.5,
+                    color: AppColors.paraColor,
+                    fontSize: Dimensions.font15,
                     text: hiddenText
                         ? (firstHalf + '...')
                         : (firstHalf + sacoundHalf)),
                 InkWell(
                   onTap: () {
                     setState(() {
-                      hiddenText =! hiddenText;
+                      hiddenText = !hiddenText;
                     });
                   },
                   child: Row(

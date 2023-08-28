@@ -5,6 +5,7 @@ import 'package:food_delivery_app/widgets/custom_big_text.dart';
 import 'package:food_delivery_app/widgets/custom_small_text.dart';
 import 'package:food_delivery_app/widgets/custom_text_icon.dart';
 
+// ignore: must_be_immutable
 class CustomAppColumn extends StatelessWidget {
   final String text;
   double fontSize;

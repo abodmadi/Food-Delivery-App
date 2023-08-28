@@ -57,6 +57,7 @@ class Dimensions {
 // Showing the Recommended Food Details Factors
   static double toolbarHeight80 = screenHeight / 9.76;
   static double expandedHeigth300 = screenHeight / 2.60;
-// Showing the ?? Factors
+// Showing the Splash Screen Factors
+  static double splashImage = screenHeight / 3.124;
 // Showing the ?? Factors
 }
