@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/pages/cart/cart_history_page.dart';
 import 'package:food_delivery_app/pages/home/main_food_page.dart';
 import 'package:food_delivery_app/utils/colors.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
@@ -12,23 +13,24 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  
   late PersistentTabController _persTabController;
   @override
   void initState() {
     super.initState();
     _persTabController = PersistentTabController(initialIndex: 0);
   }
+
   @override
   void dispose() {
     super.dispose();
   }
-  
+
   List<Widget> _buildScreens() {
     return [
       MainFoodPage(),
       Container(child: Center(child: Text('next Page'))),
-      Container(child: Center(child: Text('next next Page'))),
+      CartHistoryPage(),
+      //Container(child: Center(child: Text('next next Page'))),
       Container(child: Center(child: Text('next next next Page'))),
     ];
   }
@@ -39,25 +41,25 @@ class _HomePageState extends State<HomePage> {
         icon: Icon(CupertinoIcons.home),
         title: ("Home"),
         activeColorPrimary: AppColors.mainColor,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
+        inactiveColorPrimary: Colors.amberAccent,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.archivebox),
         title: ("History"),
         activeColorPrimary: AppColors.mainColor,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
+        inactiveColorPrimary: Colors.amberAccent,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.shopping_cart),
         title: ("Cart"),
         activeColorPrimary: AppColors.mainColor,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
+        inactiveColorPrimary: Colors.amberAccent,
       ),
       PersistentBottomNavBarItem(
         icon: Icon(CupertinoIcons.person),
         title: ("Me"),
         activeColorPrimary: AppColors.mainColor,
-        inactiveColorPrimary: CupertinoColors.systemGrey,
+        inactiveColorPrimary: Colors.amberAccent,
       ),
     ];
   }
@@ -145,6 +147,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   } */
-  
-  
 }

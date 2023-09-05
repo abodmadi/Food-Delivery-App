@@ -27,10 +27,10 @@ class PopularProductController extends GetxController {
   Future<void> getPopularProductList() async {
     Response response = await popularProductRepo.getPopularProductList();
     if (response.statusCode == 200) {
-      print("Got the Products");
+      //print("Got the Products");
       _popularProductList = [];
       _popularProductList.addAll(Product.fromJson(response.body).products);
-      print("Popular Products: ${_popularProductList}");
+      //print("Popular Products: ${_popularProductList}");
       _isLoding = true;
       update(); // paly the role of setState in Getx
     } else {}
@@ -79,14 +79,14 @@ class PopularProductController extends GetxController {
     _cart.addItem(product, _quantity);
     _quantity = 0;
     _inCartItems = _cart.getQuantity(product)!;
-    print('-----------------------------------------');
+    /*print('-----------------------------------------');
     _cart.items.forEach((key, value) {
       print('Item name: ' + value.name!);
       print('Item quantity: ' + value.quantity!.toString());
     });
     print('*****************************************');
     print('Total Items in map: ' + _cart.items.length.toString());
-    print('-----------------------------------------');
+    print('-----------------------------------------');*/
     update();
   }
 

@@ -16,6 +16,8 @@ class CartController extends GetxController {
 
   List<dynamic> cartList = [];
 
+  List<CartModel> localStorsgeItems = [];
+
   void addItem(ProductModel product, int quantity) {
     late var totalQuantity;
     if (_items.containsKey(product.id)) {
@@ -30,7 +32,7 @@ class CartController extends GetxController {
         },
       );
       if (totalQuantity <= 0) {
-        print("Item Removed: " + product.name!);
+        // print("Item Removed: " + product.name!);
         _items.remove(product.id!);
       }
     } else {
@@ -38,8 +40,8 @@ class CartController extends GetxController {
         _items.putIfAbsent(
           product.id!,
           () {
-            print(
-                'adding ${product.name} ,with quantity = ${quantity} to the cart');
+            /*print(
+                'adding ${product.name} ,with quantity = ${quantity} to the cart');*/
             return CartModel(
               id: product.id,
               img: product.img,
@@ -61,6 +63,7 @@ class CartController extends GetxController {
         );
       }
     }
+    cartRepo.addItemsToLocalStorage(totalItemsInCart);
     update();
   }
 
@@ -96,6 +99,61 @@ class CartController extends GetxController {
     return totalAmount;
   }
 
-  ///
-  ///
+  // This is for get items in local storage only when the app is Open or Kill.
+  List<CartModel> getItemsInLocalStorage() {
+    localStorsgeItems = [];
+    //localStorsgeItems = cartRepo.getItemsInCartList();
+    setItemsInLocalStorage = cartRepo.getItemsInLocalStorage();
+    return localStorsgeItems;
+  }
+
+  set setItemsInLocalStorage(List<CartModel> storageItems) {
+    localStorsgeItems = storageItems;
+    /*print(
+        'Total items in local storage: ' + localStorsgeItems.length.toString());*/
+    for (var i = 0; i < localStorsgeItems.length; i++) {
+      _items.putIfAbsent(
+        localStorsgeItems[i].product!.id!,
+        () {
+          return localStorsgeItems[i];
+        },
+      );
+    }
+  }
+
+  // This for add items to cart history
+
+  void addItemsToCartHistory() {
+    cartRepo.addItemsToCartHistory();
+    clearItems();
+  }
+
+  List<CartModel> getItemsInCartHistory() {
+    return cartRepo.getItemsInCartHistory();
+  }
+
+  void clearItems() {
+    //_items = {};
+    _items.clear();
+    update();
+  }
+
+
+
+  // this for test code
+  void remove() {
+    cartRepo.removeItems();
+    getlenght();
+  }
+
+  void getlenght() {
+    print(
+        'lenght local: ' + cartRepo.getItemsInLocalStorage().length.toString());
+    print('lenght history: ' +
+        cartRepo.getItemsInCartHistory().length.toString());
+  }
+
+  void showeTime() {
+    cartRepo.showTime();
+  }
 }

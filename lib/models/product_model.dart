@@ -32,6 +32,19 @@ class Product {
       });
     }
   }
+
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> data = <String, dynamic>{};
+    data['totalSize'] = this._totalSize;
+    data['typeId'] = this._typeId;
+    data['offset'] = this._offset;
+    if (this._products != null) {
+      data['products'] = this._products.map((product) {
+        return product.toJson();
+      }).toList();
+    }
+    return data;
+  }
 }
 
 class ProductModel {
@@ -72,5 +85,20 @@ class ProductModel {
     typeId = json['type_id'];
   }
 
-  get quantity => null;
+  //get quantity => null;
+
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = this.id;
+    data['name'] = this.name;
+    data['description'] = this.description;
+    data['price'] = this.price;
+    data['stars'] = this.stars;
+    data['img'] = this.img;
+    data['location'] = this.location;
+    data['createdAt'] = this.createdAt;
+    data['updatedAt'] = this.updatedAt;
+    data['typeId'] = this.typeId;
+    return data;
+  }
 }

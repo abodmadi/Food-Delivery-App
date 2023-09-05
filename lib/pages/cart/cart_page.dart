@@ -266,7 +266,7 @@ class CartPage extends StatelessWidget {
                   // Showing the Total price Container
                   GestureDetector(
                     onTap: () {
-                      print('Tabed on');
+                      cartController.addItemsToCartHistory();
                     },
                     child: Container(
                       padding: EdgeInsets.only(
