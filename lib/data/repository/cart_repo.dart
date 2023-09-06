@@ -19,12 +19,12 @@ class CartRepo extends GetxService {
     itemsInLocalStorageList = [];
     // Shared Preferences only accepts String or List of String, when you need to use it you must convert it.
     totalItemsInCartList.forEach((item) {
-      item.time = DateTime.now().toString();
+      item.time = DateTime.now().toString().split('.').first;
       itemsInLocalStorageList.add(jsonEncode(item));
     });
     sharedPrefInstance.setStringList(
         AppConstants.ITEMSINLOCALSTORAGELIST, itemsInLocalStorageList);
-    getItemsInLocalStorage();
+    //getItemsInLocalStorage();
   }
 
   List<CartModel> getItemsInLocalStorage() {
@@ -60,9 +60,9 @@ class CartRepo extends GetxService {
     for (var i = 0; i < itemsInLocalStorageList.length; i++) {
       itemsInCartHistoryList.add(itemsInLocalStorageList[i]);
     }
-    for (var item in itemsInCartHistoryList) {
+    /*for (var item in itemsInCartHistoryList) {
       print('Items in history list: ' + item);
-    }
+    }*/
     removeItemsInLocalStorage();
     sharedPrefInstance.setStringList(
       AppConstants.ITEMSINCARTHISTORYLIST,
@@ -80,6 +80,9 @@ class CartRepo extends GetxService {
           .forEach((item) {
         itemsInCartHistoryList.add(CartModel.fromJson(jsonDecode(item)));
       });
+      for (var item in itemsInCartHistoryList) {
+        print("Items in cart history : " + item.name!);
+      }
       return itemsInCartHistoryList;
     } else {
       return itemsInCartHistoryList;

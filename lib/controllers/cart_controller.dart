@@ -27,7 +27,7 @@ class CartController extends GetxController {
           totalQuantity = cartModel.quantity! + quantity;
           cartModel.quantity = cartModel.quantity! + quantity;
           cartModel.product = product;
-          cartModel.time = DateTime.now().toString();
+          cartModel.time = DateTime.now().toString().split('.').first;
           return cartModel;
         },
       );
@@ -49,7 +49,7 @@ class CartController extends GetxController {
               name: product.name,
               price: product.price,
               quantity: quantity,
-              time: DateTime.now().toString(),
+              time: DateTime.now().toString().split('.').first,
               product: product,
             );
           },
@@ -137,8 +137,6 @@ class CartController extends GetxController {
     _items.clear();
     update();
   }
-
-
 
   // this for test code
   void remove() {
