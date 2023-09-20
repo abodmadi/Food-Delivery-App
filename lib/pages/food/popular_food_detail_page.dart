@@ -132,8 +132,8 @@ class PopularFoodDetailPage extends StatelessWidget {
                 ),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(Dimensions.radiust20),
-                    topRight: Radius.circular(Dimensions.radiust20),
+                    topLeft: Radius.circular(Dimensions.radius20),
+                    topRight: Radius.circular(Dimensions.radius20),
                   ),
                   color: Colors.white,
                 ),
@@ -182,8 +182,8 @@ class PopularFoodDetailPage extends StatelessWidget {
               decoration: BoxDecoration(
                 color: AppColors.buttonBackgroundColor,
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(Dimensions.radiust20 * 2),
-                  topRight: Radius.circular(Dimensions.radiust20 * 2),
+                  topLeft: Radius.circular(Dimensions.radius20 * 2),
+                  topRight: Radius.circular(Dimensions.radius20 * 2),
                 ),
               ),
               child: Row(
@@ -198,7 +198,7 @@ class PopularFoodDetailPage extends StatelessWidget {
                       left: Dimensions.height10,
                     ),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Dimensions.radiust10),
+                      borderRadius: BorderRadius.circular(Dimensions.radius10),
                       color: Colors.white,
                     ),
                     child: Row(
@@ -247,7 +247,7 @@ class PopularFoodDetailPage extends StatelessWidget {
                       ),
                       decoration: BoxDecoration(
                         borderRadius:
-                            BorderRadius.circular(Dimensions.radiust10),
+                            BorderRadius.circular(Dimensions.radius10),
                         color: AppColors.mainColor,
                       ),
                       child: CustomBigText(

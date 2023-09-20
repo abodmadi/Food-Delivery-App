@@ -60,10 +60,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     child: PageView.builder(
                       controller: pageController,
                       itemBuilder: (context, index) {
-                        return _builtFoodBageItem(
-                            index,
-                            popularProductController
-                                .popularProductList[index]);
+                        return _builtFoodBageItem(index,
+                            popularProductController.popularProductList[index]);
                       },
                       itemCount:
                           popularProductController.popularProductList.length,
@@ -146,7 +144,8 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                     itemBuilder: (context, index) {
                       return GestureDetector(
                         onTap: () {
-                          Get.toNamed(RouteHelper.getRecommendedFood(index,'HomePage'));
+                          Get.toNamed(RouteHelper.getRecommendedFood(
+                              index, 'HomePage'));
                         },
                         child: Container(
                           margin: EdgeInsets.only(
@@ -163,7 +162,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                 decoration: BoxDecoration(
                                   color: Colors.white38,
                                   borderRadius: BorderRadius.circular(
-                                      Dimensions.radiust20),
+                                      Dimensions.radius20),
                                   image: DecorationImage(
                                     fit: BoxFit.cover,
                                     image: NetworkImage(AppConstants.BASE_URL +
@@ -182,9 +181,9 @@ class _FoodPageBodyState extends State<FoodPageBody> {
                                     color: Colors.white,
                                     borderRadius: BorderRadius.only(
                                       topLeft:
-                                          Radius.circular(Dimensions.radiust20),
+                                          Radius.circular(Dimensions.radius20),
                                       bottomRight:
-                                          Radius.circular(Dimensions.radiust20),
+                                          Radius.circular(Dimensions.radius20),
                                     ),
                                   ),
                                   child: Padding(
@@ -293,7 +292,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           // Meal Photo Container
           GestureDetector(
             onTap: () {
-              Get.toNamed(RouteHelper.getPopularFood(index,'HomePage'));
+              Get.toNamed(RouteHelper.getPopularFood(index, 'HomePage'));
             },
             child: Container(
               height: Dimensions.pageViewContainer,
@@ -303,7 +302,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               ),
               decoration: BoxDecoration(
                 color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
-                borderRadius: BorderRadius.circular(Dimensions.radiust30),
+                borderRadius: BorderRadius.circular(Dimensions.radius30),
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   image: NetworkImage(AppConstants.BASE_URL +
@@ -319,14 +318,14 @@ class _FoodPageBodyState extends State<FoodPageBody> {
             child: Container(
               height: Dimensions.pageViewTextContainer,
               margin: EdgeInsets.only(
-                left: Dimensions.merginLeft30,
-                right: Dimensions.merginRight30,
-                bottom: Dimensions.merginBottom30,
+                left: Dimensions.marginLeft30,
+                right: Dimensions.marginRight30,
+                bottom: Dimensions.marginBottom30,
               ),
               decoration: BoxDecoration(
                 color: Colors.white,
                 //color: Colors.red,
-                borderRadius: BorderRadius.circular(Dimensions.radiust20),
+                borderRadius: BorderRadius.circular(Dimensions.radius20),
                 boxShadow: [
                   BoxShadow(
                     color: Color(0xFFE8E8E8),

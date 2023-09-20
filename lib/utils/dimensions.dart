@@ -29,21 +29,22 @@ class Dimensions {
   static double paddingRight10 = screenWidth / 41.10;
   static double paddingLeft20 = screenWidth / 20.55;
   static double paddingRight20 = screenWidth / 20.55;
-// Showing the Mergin Wight & Height Factors
-  static double merginTop20 = screenHeight / 39.05;
-  static double merginBottom20 = screenHeight / 39.05;
-  static double merginBottom30 = screenHeight / 26.03;
-  static double merginLeft30 = screenWidth / 13.70;
-  static double merginRight30 = screenWidth / 13.70;
+// Showing the Margin Wight & Height Factors
+  static double marginTop20 = screenHeight / 39.05;
+  static double marginBottom20 = screenHeight / 39.05;
+  static double marginBottom30 = screenHeight / 26.03;
+  static double marginLeft30 = screenWidth / 13.70;
+  static double marginRight30 = screenWidth / 13.70;
 // Showing the Font Factors
   static double font15 = screenHeight / 52.06;
   static double font20 = screenHeight / 39.05;
   static double font24 = screenHeight / 32.54;
 // Showing the Radius Factors
-  static double radiust10 = screenHeight / 78.10;
-  static double radiust15 = screenHeight / 52.06;
-  static double radiust20 = screenHeight / 39.05;
-  static double radiust30 = screenHeight / 26.03;
+  static double radius10 = screenHeight / 78.10;
+  static double radius15 = screenHeight / 52.06;
+  static double radius18 = screenHeight / 43.38;
+  static double radius20 = screenHeight / 39.05;
+  static double radius30 = screenHeight / 26.03;
 // Showing the Icon Factors
   static double iconSize16 = screenHeight / 48.81;
   static double iconSize24 = screenHeight / 32.54;
@@ -56,7 +57,7 @@ class Dimensions {
   static double popularFoodNavBarSize = screenHeight / 7.81;
 // Showing the Recommended Food Details Factors
   static double toolbarHeight80 = screenHeight / 9.76;
-  static double expandedHeigth300 = screenHeight / 2.60;
+  static double expandedHeight300 = screenHeight / 2.60;
 // Showing the Splash Screen Factors
   static double splashImage = screenHeight / 3.124;
 // Showing the ?? Factors

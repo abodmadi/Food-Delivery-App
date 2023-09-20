@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.find<CartController>().getItemsInLocalStorage();
     //Get.find<CartController>().remove();
-    Get.find<CartController>().showeTime();
+    //Get.find<CartController>().showeTime();
     return GetBuilder<PopularProductController>(
       builder: (_) {
         return GetBuilder<RecommendedProductController>(

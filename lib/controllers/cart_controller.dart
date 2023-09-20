@@ -16,7 +16,7 @@ class CartController extends GetxController {
 
   List<dynamic> cartList = [];
 
-  List<CartModel> localStorsgeItems = [];
+  List<CartModel> localStorageItems = [];
 
   void addItem(ProductModel product, int quantity) {
     late var totalQuantity;
@@ -101,21 +101,21 @@ class CartController extends GetxController {
 
   // This is for get items in local storage only when the app is Open or Kill.
   List<CartModel> getItemsInLocalStorage() {
-    localStorsgeItems = [];
-    //localStorsgeItems = cartRepo.getItemsInCartList();
+    localStorageItems = [];
+    //localStorageItems = cartRepo.getItemsInCartList();
     setItemsInLocalStorage = cartRepo.getItemsInLocalStorage();
-    return localStorsgeItems;
+    return localStorageItems;
   }
 
   set setItemsInLocalStorage(List<CartModel> storageItems) {
-    localStorsgeItems = storageItems;
+    localStorageItems = storageItems;
     /*print(
-        'Total items in local storage: ' + localStorsgeItems.length.toString());*/
-    for (var i = 0; i < localStorsgeItems.length; i++) {
+        'Total items in local storage: ' + localStorageItems.length.toString());*/
+    for (var i = 0; i < localStorageItems.length; i++) {
       _items.putIfAbsent(
-        localStorsgeItems[i].product!.id!,
+        localStorageItems[i].product!.id!,
         () {
-          return localStorsgeItems[i];
+          return localStorageItems[i];
         },
       );
     }
@@ -138,7 +138,17 @@ class CartController extends GetxController {
     update();
   }
 
-  // this for test code
+  set setItemsOrderedHistory(Map<int, CartModel> orderedItems) {
+    _items.clear();
+    _items = orderedItems;
+  }
+
+  void addItemsToLocalStorage() {
+    cartRepo.addItemsToLocalStorage(totalItemsInCart);
+    update();
+  }
+
+  // This for test the code only
   void remove() {
     cartRepo.removeItems();
     getlenght();

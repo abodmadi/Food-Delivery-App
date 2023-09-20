@@ -68,8 +68,8 @@ class CartRepo extends GetxService {
       AppConstants.ITEMSINCARTHISTORYLIST,
       itemsInCartHistoryList,
     );
-    print('Cart history list lenght: ' +
-        getItemsInCartHistory().length.toString());
+    /*print('Cart history list length: ' +
+        getItemsInCartHistory().length.toString());*/
   }
 
   List<CartModel> getItemsInCartHistory() {
@@ -96,8 +96,8 @@ class CartRepo extends GetxService {
   }
 
   void showTime() {
-    getItemsInCartHistory().forEach((item) {
-      print('Item adding time: ' + item.time!);
+    getItemsInCartHistory().reversed.toList().forEach((item) {
+      print('Time adding item: ' + item.time!);
     });
   }
 }

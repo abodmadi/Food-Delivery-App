@@ -25,8 +25,8 @@ class _MainFoodPageState extends State<MainFoodPage> {
             Container(
               child: Container(
                 margin: EdgeInsets.only(
-                  top: Dimensions.merginTop20,
-                  bottom: Dimensions.merginBottom20,
+                  top: Dimensions.marginTop20,
+                  bottom: Dimensions.marginBottom20,
                 ),
                 padding: EdgeInsets.only(
                   left: Dimensions.paddingLeft20,
@@ -61,7 +61,7 @@ class _MainFoodPageState extends State<MainFoodPage> {
                         decoration: BoxDecoration(
                           color: AppColors.mainColor,
                           borderRadius: BorderRadius.all(
-                            Radius.circular(Dimensions.radiust15),
+                            Radius.circular(Dimensions.radius15),
                           ),
                         ),
                         child: Icon(

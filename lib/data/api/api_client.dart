@@ -1,9 +1,10 @@
+import 'dart:convert';
 import 'package:food_delivery_app/utils/app_constants.dart';
 import 'package:get/get.dart';
 
 class ApiClient extends GetConnect implements GetxService {
   late String token; // Talk with server
-  final String appBaseUrl; // Applecation Url need it to talk with server
+  final String appBaseUrl; // Application Url need it to talk with server
   // ignore: unused_field
   late Map<String, String> _mainHeaders;
   ApiClient({required this.appBaseUrl}) {
@@ -12,8 +13,9 @@ class ApiClient extends GetConnect implements GetxService {
     token = AppConstants.TOKEN; // Long the request
     _mainHeaders = {
       'Content-type':
-          'application/json; charset=UTF-8', // Get and Post request for data , Decod and Encode type
+          'application/json; charset=UTF-8', // Get and Post request for data , Decode and Encode type
       'Authorization': 'Bearer $token', // Authentication client
+      'Connection': 'keep-alive',
     };
   }
 

@@ -145,8 +145,8 @@ class RecommendedFoodDetailPage extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(Dimensions.radiust30),
-                      topRight: Radius.circular(Dimensions.radiust30),
+                      topLeft: Radius.circular(Dimensions.radius30),
+                      topRight: Radius.circular(Dimensions.radius30),
                     ),
                   ),
                   child: Center(
@@ -160,7 +160,7 @@ class RecommendedFoodDetailPage extends StatelessWidget {
               // Showing the FlexibleSpaceBar
               backgroundColor: AppColors.yellowColor,
               pinned: true,
-              expandedHeight: Dimensions.expandedHeigth300,
+              expandedHeight: Dimensions.expandedHeight300,
               flexibleSpace: FlexibleSpaceBar(
                 background: Image.network(
                   AppConstants.BASE_URL +
@@ -252,8 +252,8 @@ class RecommendedFoodDetailPage extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: AppColors.buttonBackgroundColor,
                     borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(Dimensions.radiust20 * 2),
-                      topRight: Radius.circular(Dimensions.radiust20 * 2),
+                      topLeft: Radius.circular(Dimensions.radius20 * 2),
+                      topRight: Radius.circular(Dimensions.radius20 * 2),
                     ),
                   ),
                   child: Row(
@@ -269,7 +269,7 @@ class RecommendedFoodDetailPage extends StatelessWidget {
                         ),
                         decoration: BoxDecoration(
                           borderRadius:
-                              BorderRadius.circular(Dimensions.radiust10),
+                              BorderRadius.circular(Dimensions.radius10),
                           color: Colors.white,
                         ),
                         child: Icon(
@@ -291,7 +291,7 @@ class RecommendedFoodDetailPage extends StatelessWidget {
                           ),
                           decoration: BoxDecoration(
                             borderRadius:
-                                BorderRadius.circular(Dimensions.radiust10),
+                                BorderRadius.circular(Dimensions.radius10),
                             color: AppColors.mainColor,
                           ),
                           child: CustomBigText(
