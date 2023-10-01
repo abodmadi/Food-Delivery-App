@@ -29,6 +29,8 @@ class _MainFoodPageState extends State<MainFoodPage> {
     print('Cuurent Wight :' + MediaQuery.of(context).size.width.toString());
     return SafeArea(
       child: RefreshIndicator(
+        color: Colors.white,
+        backgroundColor: AppColors.mainColor,
         child: Column(
           children: [
             // Showing the Header
