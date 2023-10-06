@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/utils/colors.dart';
 import 'package:food_delivery_app/utils/dimensions.dart';
 
 // ignore: must_be_immutable
@@ -8,12 +7,14 @@ class CustomAppTextField extends StatelessWidget {
   final String hintText;
   final IconData prefixIcon;
   Color iconColor;
+  bool isObscureText;
   CustomAppTextField({
     super.key,
     required this.hintText,
     required this.textController,
     required this.prefixIcon,
     this.iconColor = const Color(0xFF89dad0),
+    this.isObscureText = false,
   });
 
   @override
@@ -25,17 +26,18 @@ class CustomAppTextField extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(Dimensions.radius30),
+        borderRadius: BorderRadius.circular(Dimensions.radius15),
         boxShadow: [
           BoxShadow(
-            blurRadius: 10,
-            spreadRadius: 7,
-            offset: const Offset(1, 10),
+            blurRadius: 3,
+            spreadRadius: 1,
+            offset: const Offset(1, 1),
             color: Colors.grey.withOpacity(0.2),
           ),
         ],
       ),
       child: TextField(
+        obscureText: isObscureText,
         controller: textController,
         decoration: InputDecoration(
           // This showing the hintText.
@@ -43,11 +45,11 @@ class CustomAppTextField extends StatelessWidget {
           // This showing the prefixIcon.
           prefixIcon: Icon(
             prefixIcon,
-            color:iconColor,
+            color: iconColor,
           ),
           // This showing the focusedBorder.
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Dimensions.radius30),
+            borderRadius: BorderRadius.circular(Dimensions.radius15),
             borderSide: const BorderSide(
               color: Colors.white,
               width: 1.0,
@@ -55,7 +57,7 @@ class CustomAppTextField extends StatelessWidget {
           ),
           // This showing the enabledBorder.
           enabledBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Dimensions.radius30),
+            borderRadius: BorderRadius.circular(Dimensions.radius15),
             borderSide: const BorderSide(
               color: Colors.white,
               width: 1.0,
@@ -63,7 +65,7 @@ class CustomAppTextField extends StatelessWidget {
           ),
           // This showing the border.
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(Dimensions.radius30),
+            borderRadius: BorderRadius.circular(Dimensions.radius15),
           ),
         ),
       ),

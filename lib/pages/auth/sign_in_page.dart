@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 
 import 'sign_up_page.dart';
 
+// ignore: must_be_immutable
 class SignInPage extends StatelessWidget {
   SignInPage({super.key});
   var emailController = TextEditingController();
@@ -35,13 +36,14 @@ class SignInPage extends StatelessWidget {
               // This showing the ??
               Container(
                 margin: EdgeInsets.only(
-                  right: Dimensions.height30 * 5,
+                  left: Dimensions.height10,
                 ),
+                width: double.maxFinite,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Hello',
+                      'Hello..',
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: Dimensions.font24 * 2,
@@ -51,10 +53,14 @@ class SignInPage extends StatelessWidget {
                       'Sign into your account',
                       style: TextStyle(
                         color: Colors.grey[500],
+                        fontSize: Dimensions.font15,
                       ),
                     ),
                   ],
                 ),
+              ),
+              SizedBox(
+                height: Dimensions.height20,
               ),
               // This showing the Email CustomAppTextField.
               CustomAppTextField(
@@ -66,30 +72,37 @@ class SignInPage extends StatelessWidget {
               ),
               // This showing password CustomAppTextField.
               CustomAppTextField(
+                  isObscureText: true,
                   hintText: 'Password',
                   textController: passwordController,
                   prefixIcon: Icons.password),
               SizedBox(
-                height: Dimensions.height10,
+                height: Dimensions.height20,
               ),
+
               // This showing the ??
-              Container(
-                margin: EdgeInsets.only(
-                  left: Dimensions.height30 * 5,
-                ),
-                child: RichText(
-                  text: TextSpan(
-                    text: 'Sign into your account',
-                    style: TextStyle(
-                      color: Colors.grey[500],
-                      fontSize: Dimensions.font20,
+              Row(
+                children: [
+                  Expanded(child: Container()),
+                  RichText(
+                    text: TextSpan(
+                      text: 'Sign into your account',
+                      style: TextStyle(
+                        color: Colors.grey[500],
+                        fontSize: Dimensions.font20,
+                      ),
                     ),
                   ),
-                ),
+                  SizedBox(
+                    width: Dimensions.height10,
+                  ),
+                ],
               ),
+
               SizedBox(
-                height: Dimensions.height30 * 2,
+                height: Dimensions.height30 * 2 - 10,
               ),
+
               // This showing Sign-in button
               Container(
                 width: Dimensions.screenWidth / 2,
@@ -107,25 +120,26 @@ class SignInPage extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                height: Dimensions.height30 * 2,
+                height: Dimensions.height20 + 5,
               ),
               // This showing the link to Sign Up.
               RichText(
                 text: TextSpan(
-                  recognizer: TapGestureRecognizer()
-                    ..onTap = () => Get.to(SignUpPage()),
+                  text: "Don't have an account?",
+                  style: TextStyle(
+                    color: Colors.grey[500],
+                    fontSize: Dimensions.font20,
+                  ),
                   children: [
                     TextSpan(
-                      text: "Don't have an account?",
-                      style: TextStyle(
-                        color: Colors.grey[500],
-                        fontSize: Dimensions.font20,
-                      ),
-                    ),
-                    TextSpan(
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () => Get.to(
+                              () => SignUpPage(),
+                              transition: Transition.fadeIn,
+                            ),
                       text: ' Create.',
                       style: TextStyle(
-                        color: Colors.black,
+                        color: AppColors.mainBlackColor,
                         fontSize: Dimensions.font20,
                       ),
                     ),
