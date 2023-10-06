@@ -6,6 +6,7 @@ class CustomAppTextField extends StatelessWidget {
   final TextEditingController textController;
   final String hintText;
   final IconData prefixIcon;
+  Widget? suffix;
   Color iconColor;
   bool isObscureText;
   CustomAppTextField({
@@ -15,6 +16,7 @@ class CustomAppTextField extends StatelessWidget {
     required this.prefixIcon,
     this.iconColor = const Color(0xFF89dad0),
     this.isObscureText = false,
+    this.suffix,
   });
 
   @override
@@ -47,6 +49,8 @@ class CustomAppTextField extends StatelessWidget {
             prefixIcon,
             color: iconColor,
           ),
+          // This showing the suffix.
+          suffix: suffix,
           // This showing the focusedBorder.
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(Dimensions.radius15),

@@ -65,7 +65,10 @@ class SignUpPage extends StatelessWidget {
             );
             print('Registration done successfully');
           } else {
-            showCustomSnackBar(status.message);
+            showCustomSnackBar(
+              status.message,
+              title: 'Register Failed',
+            );
           }
         });
       }
@@ -104,10 +107,22 @@ class SignUpPage extends StatelessWidget {
                         ),
                         // This showing password CustomAppTextField.
                         CustomAppTextField(
-                            isObscureText: true,
-                            hintText: 'Password',
-                            textController: passwordController,
-                            prefixIcon: Icons.password),
+                          isObscureText: !authController.isVisible,
+                          hintText: 'Password',
+                          textController: passwordController,
+                          prefixIcon: Icons.password,
+                          suffix: GestureDetector(
+                            onTap: () {
+                              authController.visibleOrNotPassword();
+                            },
+                            child: Icon(
+                              !authController.isVisible
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                              color: AppColors.mainColor,
+                            ),
+                          ),
+                        ),
                         SizedBox(
                           height: Dimensions.height10,
                         ),

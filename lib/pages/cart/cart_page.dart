@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/controllers/auth_controller.dart';
 import 'package:food_delivery_app/controllers/cart_controller.dart';
 import 'package:food_delivery_app/controllers/popular_product_controller.dart';
 import 'package:food_delivery_app/controllers/recommended_product_controller.dart';
@@ -307,7 +308,11 @@ class CartPage extends StatelessWidget {
                         // Showing the Total price Container
                         GestureDetector(
                           onTap: () {
-                            cartController.addItemsToCartHistory();
+                            if (Get.find<AuthController>().isUserLoggedIn()) {
+                              cartController.addItemsToCartHistory();
+                            } else {
+                              Get.toNamed(RouteHelper.getSignIn());
+                            }
                           },
                           child: Container(
                             padding: EdgeInsets.only(

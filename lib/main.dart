@@ -11,8 +11,6 @@ import 'package:food_delivery_app/route/route_helper.dart';
 import 'package:get/get.dart';
 //import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'helper/dependencies.dart' as dep;
-import 'pages/auth/sign_in_page.dart';
-import 'pages/auth/sign_up_page.dart';
 //import 'pages/cart/cart_page.dart';
 
 void main() async {
@@ -41,9 +39,9 @@ class MyApp extends StatelessWidget {
                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
                 useMaterial3: true,
               ),
-              home: SignInPage(),
-              //initialRoute: RouteHelper.getSplashScreen(),
-              //getPages: RouteHelper.routes,
+              //home: SignInPage(),
+              initialRoute: RouteHelper.getSplashScreen(),
+              getPages: RouteHelper.routes,
             );
           },
         );

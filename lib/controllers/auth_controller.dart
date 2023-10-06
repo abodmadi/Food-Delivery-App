@@ -1,5 +1,6 @@
 import 'package:food_delivery_app/data/repository/auth_repo.dart';
 import 'package:food_delivery_app/models/response_model.dart';
+import 'package:food_delivery_app/models/sign_in_model.dart';
 import 'package:food_delivery_app/models/sign_up_model.dart';
 import 'package:get/get.dart';
 
@@ -11,6 +12,8 @@ class AuthController extends GetxController {
   bool _isLoaded = false;
   bool get isLoaded => _isLoaded;
 
+  bool _isVisible = false;
+  bool get isVisible => _isVisible;
   Future<ResponseModel> registration({required SignUpModel signUpBody}) async {
     _isLoaded = true;
     update();
@@ -26,5 +29,42 @@ class AuthController extends GetxController {
     _isLoaded = false;
     update();
     return responseModel;
+  }
+
+  Future<ResponseModel> logIn({required SignInModel signInBody}) async {
+    print(
+        'The getting user token: ' + await authRepo.getUserToken().toString());
+    _isLoaded = true;
+    update();
+    Response response = await authRepo.logIn(signInBody: signInBody.toJson());
+    late ResponseModel responseModel;
+    if (response.statusCode == 200) {
+      await authRepo.saveUserToken(response.body['token']);
+      print('The Backend token:' + response.body['token'].toString());
+      responseModel = ResponseModel(true, response.body['token']);
+    } else {
+      responseModel = ResponseModel(false, response.statusText!);
+    }
+    _isLoaded = false;
+    update();
+    return responseModel;
+  }
+
+  Future<void> saveUserPhoneAndPassword(
+      {required String phone, required String password}) async {
+    await authRepo.saveUserPhoneAndPassword(phone: phone, password: password);
+  }
+
+  visibleOrNotPassword() {
+    _isVisible = !_isVisible;
+    update();
+  }
+
+  isUserLoggedIn() {
+    return authRepo.isUserLoggedIn();
+  }
+
+  bool logOut() {
+    return authRepo.logOut();
   }
 }
