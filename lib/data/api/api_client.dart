@@ -1,4 +1,3 @@
-import 'dart:convert';
 import 'package:food_delivery_app/utils/app_constants.dart';
 import 'package:get/get.dart';
 
@@ -26,9 +25,11 @@ class ApiClient extends GetConnect implements GetxService {
     };
   }
 
-  Future<Response> getData({required String uri}) async {
+  Future<Response> getData(
+      {required String uri, Map<String, String>? headers}) async {
     try {
-      Response response = await get(uri);
+      print('Token: ' + token.toString());
+      Response response = await get(uri, headers: headers ?? _mainHeaders);
       return response;
     } catch (ex) {
       return Response(

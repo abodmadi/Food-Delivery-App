@@ -148,6 +148,11 @@ class CartController extends GetxController {
     update();
   }
 
+  void clearCartHistory() {
+    cartRepo.clearCartHistory();
+    update();
+  }
+
   // This for test the code only
   void remove() {
     cartRepo.removeItems();

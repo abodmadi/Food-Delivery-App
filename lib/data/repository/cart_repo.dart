@@ -89,6 +89,12 @@ class CartRepo extends GetxService {
     }
   }
 
+  void clearCartHistory() {
+    removeItemsInLocalStorage();
+    itemsInCartHistoryList.clear();
+    sharedPrefInstance.remove(AppConstants.ITEMSINCARTHISTORYLIST);
+  }
+
   // This for test code
   void removeItems() {
     sharedPrefInstance.remove(AppConstants.ITEMSINLOCALSTORAGELIST);

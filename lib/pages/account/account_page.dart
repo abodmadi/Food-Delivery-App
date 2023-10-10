@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controllers/auth_controller.dart';
+import 'package:food_delivery_app/controllers/cart_controller.dart';
+import 'package:food_delivery_app/controllers/user_controller.dart';
+import 'package:food_delivery_app/pages/base/custom_loader.dart';
+import 'package:food_delivery_app/pages/base/show_custom_snackbar.dart';
 import 'package:food_delivery_app/route/route_helper.dart';
 import 'package:food_delivery_app/utils/colors.dart';
 import 'package:food_delivery_app/utils/dimensions.dart';
@@ -13,6 +17,11 @@ class AccountPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool _userLoggedIn = Get.find<AuthController>().isUserLoggedIn();
+    if (_userLoggedIn) {
+      Get.find<UserController>().getUserInfo();
+      print('User Logged in');
+    }
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -25,87 +34,117 @@ class AccountPage extends StatelessWidget {
           ),
         ),
         // This Showing the user information.
-        body: Container(
-          width: double.maxFinite,
-          margin: EdgeInsets.only(top: Dimensions.height20),
-          child: Column(
-            children: [
-              // This showing the user image.
-              CustomAppIcon(
-                icon: Icons.person,
-                backColor: AppColors.mainColor,
-                iconColor: Colors.white,
-                iconSize: Dimensions.iconSize75,
-                size: Dimensions.radius150,
-              ),
-              SizedBox(
-                height: Dimensions.height30,
-              ),
-              Expanded(
-                child: ListView(
-                  children: [
-                    // This showing the user name.
-                    CustomAccountCardInfo(info: 'Abdullah', icon: Icons.person),
-                    SizedBox(
-                      height: Dimensions.height20,
+        body: GetBuilder<UserController>(
+          builder: (userController) {
+            return _userLoggedIn
+                ? (userController.isLoading
+                    ? Container(
+                        width: double.maxFinite,
+                        margin: EdgeInsets.only(top: Dimensions.height20),
+                        child: Column(
+                          children: [
+                            // This showing the user image.
+                            CustomAppIcon(
+                              icon: Icons.person,
+                              backColor: AppColors.mainColor,
+                              iconColor: Colors.white,
+                              iconSize: Dimensions.iconSize75,
+                              size: Dimensions.radius150,
+                            ),
+                            SizedBox(
+                              height: Dimensions.height30,
+                            ),
+                            Expanded(
+                              child: ListView(
+                                children: [
+                                  // This showing the user name.
+                                  CustomAccountCardInfo(
+                                      info: userController.userModel.name!,
+                                      icon: Icons.person),
+                                  SizedBox(
+                                    height: Dimensions.height20,
+                                  ),
+                                  // This showing the user phone.
+                                  CustomAccountCardInfo(
+                                    info: userController.userModel.phone!,
+                                    icon: Icons.phone,
+                                    backColor: AppColors.yellowColor,
+                                  ),
+                                  SizedBox(
+                                    height: Dimensions.height20,
+                                  ),
+                                  // This showing the user mail.
+                                  CustomAccountCardInfo(
+                                    info: userController.userModel.email!,
+                                    icon: Icons.email,
+                                    backColor: AppColors.yellowColor,
+                                  ),
+                                  SizedBox(
+                                    height: Dimensions.height20,
+                                  ),
+                                  // This showing the user address.
+                                  CustomAccountCardInfo(
+                                    info: '6 October',
+                                    icon: Icons.location_on,
+                                    backColor: AppColors.yellowColor,
+                                  ),
+                                  SizedBox(
+                                    height: Dimensions.height20,
+                                  ),
+                                  // This showing the message.
+                                  CustomAccountCardInfo(
+                                      info: 'Hi,Abdullah',
+                                      icon: Icons.message,
+                                      backColor: Colors.redAccent),
+                                  SizedBox(
+                                    height: Dimensions.height20,
+                                  ),
+                                  // This showing the Logout.
+                                  GestureDetector(
+                                    onTap: () {
+                                      if (Get.find<AuthController>()
+                                          .isUserLoggedIn()) {
+                                        /*if (Get.find<AuthController>().logOut()) {
+                          }*/
+                                        Get.find<AuthController>().logOut();
+                                        Get.find<CartController>().clearItems();
+                                        Get.find<CartController>()
+                                            .clearCartHistory();
+                                        showCustomSnackBar(
+                                          'Logging out done successfully',
+                                          title: 'Logging out',
+                                          backColor: AppColors.mainColor,
+                                        );
+                                        Get.toNamed(RouteHelper.getSignIn());
+                                      } else {
+                                        showCustomSnackBar(
+                                          'You are already logged out ',
+                                          title: 'Warning',
+                                          backColor: AppColors.yellowColor,
+                                        );
+                                      }
+                                    },
+                                    child: CustomAccountCardInfo(
+                                        info: 'Logout',
+                                        icon: Icons.logout,
+                                        backColor: Colors.redAccent),
+                                  ),
+                                  SizedBox(
+                                    height: Dimensions.height20,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
+                    : CustomLoader())
+                : Center(
+                    child: Container(
+                      child: const Text('You must sign-in'),
                     ),
-                    // This showing the user phone.
-                    CustomAccountCardInfo(
-                      info: '01554827311',
-                      icon: Icons.phone,
-                      backColor: AppColors.yellowColor,
-                    ),
-                    SizedBox(
-                      height: Dimensions.height20,
-                    ),
-                    // This showing the user mail.
-                    CustomAccountCardInfo(
-                      info: 'Abdullah@gmail.com',
-                      icon: Icons.email,
-                      backColor: AppColors.yellowColor,
-                    ),
-                    SizedBox(
-                      height: Dimensions.height20,
-                    ),
-                    // This showing the user address.
-                    CustomAccountCardInfo(
-                      info: '6 October',
-                      icon: Icons.location_on,
-                      backColor: AppColors.yellowColor,
-                    ),
-                    SizedBox(
-                      height: Dimensions.height20,
-                    ),
-                    // This showing the message.
-                    CustomAccountCardInfo(
-                        info: 'Hi,Abdullah',
-                        icon: Icons.message,
-                        backColor: Colors.redAccent),
-                    SizedBox(
-                      height: Dimensions.height20,
-                    ),
-                    // This showing the Logout.
-                    GestureDetector(
-                      onTap: () {
-                        if (Get.find<AuthController>().isUserLoggedIn()) {
-                          if (Get.find<AuthController>().logOut()) {
-                            Get.toNamed(RouteHelper.getCart());
-                          }
-                        }
-                      },
-                      child: CustomAccountCardInfo(
-                          info: 'Logout',
-                          icon: Icons.logout,
-                          backColor: Colors.redAccent),
-                    ),
-                    SizedBox(
-                      height: Dimensions.height20,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+                  );
+          },
         ),
       ),
     );

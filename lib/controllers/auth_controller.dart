@@ -32,8 +32,9 @@ class AuthController extends GetxController {
   }
 
   Future<ResponseModel> logIn({required SignInModel signInBody}) async {
-    print(
-        'The getting user token: ' + await authRepo.getUserToken().toString());
+    /*print(
+        'The getting user token: ' + await authRepo.getUserToken().toString());*/
+    authRepo.getUserToken();
     _isLoaded = true;
     update();
     Response response = await authRepo.logIn(signInBody: signInBody.toJson());
@@ -60,7 +61,7 @@ class AuthController extends GetxController {
     update();
   }
 
-  isUserLoggedIn() {
+  bool isUserLoggedIn() {
     return authRepo.isUserLoggedIn();
   }
 

@@ -25,8 +25,8 @@ class _MainFoodPageState extends State<MainFoodPage> {
   
   @override
   Widget build(BuildContext context) {
-    print('Cuurent height :' + MediaQuery.of(context).size.height.toString());
-    print('Cuurent Wight :' + MediaQuery.of(context).size.width.toString());
+    //print('Cuurent height :' + MediaQuery.of(context).size.height.toString());
+    //print('Cuurent Wight :' + MediaQuery.of(context).size.width.toString());
     return SafeArea(
       child: RefreshIndicator(
         color: Colors.white,
