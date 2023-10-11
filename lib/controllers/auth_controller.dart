@@ -21,6 +21,8 @@ class AuthController extends GetxController {
         await authRepo.registration(signUpBody: signUpBody.toJson());
     late ResponseModel responseModel;
     if (response.statusCode == 200) {
+      print('The registration token controller:' +
+          response.body['token'].toString());
       await authRepo.saveUserToken(response.body['token']);
       responseModel = ResponseModel(true, response.body['token']);
     } else {
@@ -41,7 +43,8 @@ class AuthController extends GetxController {
     late ResponseModel responseModel;
     if (response.statusCode == 200) {
       await authRepo.saveUserToken(response.body['token']);
-      print('The Backend token:' + response.body['token'].toString());
+      print('The Login token controller:' + response.body['token'].toString());
+
       responseModel = ResponseModel(true, response.body['token']);
     } else {
       responseModel = ResponseModel(false, response.statusText!);

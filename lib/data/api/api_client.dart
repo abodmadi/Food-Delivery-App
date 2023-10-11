@@ -1,15 +1,18 @@
 import 'package:food_delivery_app/utils/app_constants.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ApiClient extends GetConnect implements GetxService {
   late String token; // Talk with server
   final String appBaseUrl; // Application Url need it to talk with server
+  final SharedPreferences sharedPrefInstance;
   // ignore: unused_field
   late Map<String, String> _mainHeaders;
-  ApiClient({required this.appBaseUrl}) {
+  ApiClient({required this.appBaseUrl, required this.sharedPrefInstance}) {
     baseUrl = appBaseUrl;
     timeout = Duration(seconds: 30);
-    token = AppConstants.TOKEN; // Long the request
+    token = sharedPrefInstance.getString(AppConstants.TOKEN) ??
+        'Null'; // Login request
     _mainHeaders = {
       'Content-type':
           'application/json; charset=UTF-8', // Get and Post request for data , Decode and Encode type
@@ -28,7 +31,6 @@ class ApiClient extends GetConnect implements GetxService {
   Future<Response> getData(
       {required String uri, Map<String, String>? headers}) async {
     try {
-      print('Token: ' + token.toString());
       Response response = await get(uri, headers: headers ?? _mainHeaders);
       return response;
     } catch (ex) {

@@ -5,6 +5,7 @@ import 'package:food_delivery_app/controllers/auth_controller.dart';
 import 'package:food_delivery_app/models/sign_up_model.dart';
 import 'package:food_delivery_app/pages/base/custom_loader.dart';
 import 'package:food_delivery_app/pages/base/show_custom_snackbar.dart';
+import 'package:food_delivery_app/route/route_helper.dart';
 import 'package:food_delivery_app/utils/colors.dart';
 import 'package:food_delivery_app/utils/dimensions.dart';
 import 'package:food_delivery_app/widgets/custom_app_text_field.dart';
@@ -63,7 +64,8 @@ class SignUpPage extends StatelessWidget {
               title: 'Register successfully',
               backColor: AppColors.mainColor,
             );
-            print('Registration done successfully');
+            //print('Registration done successfully');
+            Get.toNamed(RouteHelper.getInitial());
           } else {
             showCustomSnackBar(
               status.message,

@@ -21,7 +21,8 @@ Future<void> init() async {
   // Load it to use
   Get.lazyPut(() => sharedPrefInstance);
   // Api Client
-  Get.lazyPut(() => ApiClient(appBaseUrl: AppConstants.BASE_URL));
+  Get.lazyPut(() => ApiClient(
+      appBaseUrl: AppConstants.BASE_URL, sharedPrefInstance: Get.find()));
   // Repositories
   // Grt.find: find the instance we declared it in ApiClient lazyPut.
   Get.lazyPut(

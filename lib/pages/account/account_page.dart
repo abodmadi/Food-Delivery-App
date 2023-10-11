@@ -20,7 +20,7 @@ class AccountPage extends StatelessWidget {
     bool _userLoggedIn = Get.find<AuthController>().isUserLoggedIn();
     if (_userLoggedIn) {
       Get.find<UserController>().getUserInfo();
-      print('User Logged in');
+      //print('User Logged in');
     }
     return SafeArea(
       child: Scaffold(
@@ -139,10 +139,57 @@ class AccountPage extends StatelessWidget {
                         ),
                       )
                     : CustomLoader())
-                : Center(
-                    child: Container(
-                      child: const Text('You must sign-in'),
-                    ),
+                : Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        child: Center(
+                          child: Container(
+                            width: double.maxFinite,
+                            height: Dimensions.height20 * 8,
+                            margin: EdgeInsets.only(
+                              left: Dimensions.height20,
+                              right: Dimensions.height20,
+                            ),
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.circular(Dimensions.radius20),
+                              image: DecorationImage(
+                                fit: BoxFit.cover,
+                                image: AssetImage(
+                                    'assets/image/signintocontinue.png'),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Get.toNamed(RouteHelper.getSignIn());
+                        },
+                        child: Container(
+                          child: Container(
+                            width: double.maxFinite,
+                            height: Dimensions.height20 * 4,
+                            margin: EdgeInsets.only(
+                              left: Dimensions.height20,
+                              right: Dimensions.height20,
+                            ),
+                            decoration: BoxDecoration(
+                              color: AppColors.mainColor,
+                              borderRadius:
+                                  BorderRadius.circular(Dimensions.radius20),
+                            ),
+                            child: Center(
+                              child: CustomBigText(
+                                text: 'Sign In',
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   );
           },
         ),

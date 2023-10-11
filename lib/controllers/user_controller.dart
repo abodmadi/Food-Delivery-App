@@ -20,7 +20,7 @@ class UserController extends GetxController {
     if (response.statusCode == 200) {
       _userModel = UserModel.fromJson(response.body);
       _isLoading = true;
-      print('get user info');
+      print('get user info successfully');
       responseModel = ResponseModel(true, "Successfully");
     } else {
       responseModel = ResponseModel(false, response.statusText!);
