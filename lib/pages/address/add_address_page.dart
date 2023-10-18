@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controllers/auth_controller.dart';
 import 'package:food_delivery_app/controllers/location_controller.dart';
 import 'package:food_delivery_app/controllers/user_controller.dart';
+import 'package:food_delivery_app/utils/colors.dart';
+import 'package:food_delivery_app/utils/dimensions.dart';
 import 'package:get/get.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
@@ -19,9 +21,9 @@ class _AddAddressPageState extends State<AddAddressPage> {
   late bool _isLoggedIn;
 
   // This showing the camera view and location in it (in this case the location is USA ),
-  late LatLng _latLng;
+  late LatLng _latLng = LatLng(29.952654, 30.921919);
   CameraPosition _cameraPosition = CameraPosition(
-    target: LatLng(45.51563, -122.677433),
+    target: LatLng(29.952654, 30.921919),
     zoom: 17,
   );
 
@@ -30,7 +32,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
     super.initState();
     // This for cheek if the user is logged in or not and cheek if the user info is not empty.
     _isLoggedIn = Get.find<AuthController>().isUserLoggedIn();
-    if (_isLoggedIn && Get.find<UserController>().userModel == Null) {
+    if (_isLoggedIn && Get.find<UserController>().userModel == null) {
       Get.find<UserController>().getUserInfo();
     }
     // This for get the user saved address.
@@ -58,7 +60,62 @@ class _AddAddressPageState extends State<AddAddressPage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Scaffold(),
+      child: Scaffold(
+        appBar: AppBar(
+          centerTitle: true,
+          backgroundColor: AppColors.mainColor,
+          title: Text('Address Page'),
+        ),
+        body: GetBuilder<LocationController>(
+          builder: (locationController) {
+            return Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.only(
+                    top: Dimensions.height5,
+                    left: Dimensions.height5,
+                    right: Dimensions.height5,
+                  ),
+                  width: MediaQuery.of(context).size.width,
+                  height: 200,
+                  decoration: BoxDecoration(
+                    borderRadius:
+                        BorderRadius.circular(Dimensions.radius10 / 2),
+                    border: Border.all(
+                      color: Theme.of(context).primaryColor,
+                      width: 2,
+                    ),
+                  ),
+                  child: Stack(
+                    children: [
+                      GoogleMap(
+                        initialCameraPosition: CameraPosition(
+                          target: _latLng,
+                          zoom: 17,
+                        ),
+                        zoomControlsEnabled: false,
+                        compassEnabled: false,
+                        indoorViewEnabled: true,
+                        mapToolbarEnabled: false,
+                        onCameraIdle: () {
+                          locationController.updatePosition(
+                              _cameraPosition, true);
+                        },
+                        onCameraMove: (position) => _cameraPosition = position,
+                        onMapCreated:
+                            (GoogleMapController googleMapController) {
+                          locationController.setMapController =
+                              googleMapController;
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          },
+        ),
+      ),
     );
   }
 }

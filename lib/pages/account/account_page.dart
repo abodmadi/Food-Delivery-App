@@ -83,10 +83,16 @@ class AccountPage extends StatelessWidget {
                                     height: Dimensions.height20,
                                   ),
                                   // This showing the user address.
-                                  CustomAccountCardInfo(
-                                    info: '6 October',
-                                    icon: Icons.location_on,
-                                    backColor: AppColors.yellowColor,
+                                  GestureDetector(
+                                    onTap: () {
+                                      Get.toNamed(
+                                          RouteHelper.getAddAddressPage());
+                                    },
+                                    child: CustomAccountCardInfo(
+                                      info: '6 October',
+                                      icon: Icons.location_on,
+                                      backColor: AppColors.yellowColor,
+                                    ),
                                   ),
                                   SizedBox(
                                     height: Dimensions.height20,

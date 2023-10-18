@@ -3,7 +3,7 @@ class AppConstants {
   static const int APP_VERSION = 1;
   
   // This showing the base url 
-  static const String BASE_URL = 'http://192.168.1.7:8001/';
+  static const String BASE_URL = 'http://192.168.1.6:8001/';
   
   // This showing the end point 
   static const String POPULAR_PRODUCT_URI = 'api/v1/products/popular';
@@ -13,6 +13,8 @@ class AppConstants {
   static const String LOGIN_URI = 'api/v1/auth/login';
   static const String UPLOADS_URI = 'uploads/';
   static const String USER_INFO_URI = 'api/v1/customer/info';
+  static const String USER_ADDRESS = 'user-address';
+  static const String GEOCODE_URI = 'api/v1/config/geocode-api';
 
 
   static const String TOKEN = '';

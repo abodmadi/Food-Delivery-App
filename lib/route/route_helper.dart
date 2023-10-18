@@ -1,3 +1,4 @@
+import 'package:food_delivery_app/pages/address/add_address_page.dart';
 import 'package:food_delivery_app/pages/auth/sign_in_page.dart';
 import 'package:food_delivery_app/pages/auth/sign_up_page.dart';
 import 'package:food_delivery_app/pages/cart/cart_page.dart';
@@ -16,6 +17,7 @@ class RouteHelper {
   static const String cart = '/cart';
   static const String signIn = '/sign-in';
   static const String signUp = '/sign-up';
+  static const String addAddress = '/add-address';
 
   static String getSplashScreen() => '$splash';
   static String getInitial() => '$initial';
@@ -27,6 +29,7 @@ class RouteHelper {
 
   static String getSignIn() => '$signIn';
   static String getSignUp() => '$signUp';
+  static String getAddAddressPage() => '$addAddress';
 
   static List<GetPage> routes = [
     GetPage(
@@ -92,5 +95,10 @@ class RouteHelper {
       },
       transition: Transition.fadeIn,
     ),
+    GetPage(
+        name: addAddress,
+        page: () {
+          return AddAddressPage();
+        }),
   ];
 }
