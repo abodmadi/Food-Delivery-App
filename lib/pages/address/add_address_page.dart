@@ -32,7 +32,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
     super.initState();
     // This for cheek if the user is logged in or not and cheek if the user info is not empty.
     _isLoggedIn = Get.find<AuthController>().isUserLoggedIn();
-    if (_isLoggedIn && Get.find<UserController>().userModel == null) {
+    if (_isLoggedIn && Get.find<UserController>().userModel == Null) {
       Get.find<UserController>().getUserInfo();
     }
     // This for get the user saved address.
@@ -77,7 +77,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
                     right: Dimensions.height5,
                   ),
                   width: MediaQuery.of(context).size.width,
-                  height: 200,
+                  height: 300,
                   decoration: BoxDecoration(
                     borderRadius:
                         BorderRadius.circular(Dimensions.radius10 / 2),
@@ -93,6 +93,7 @@ class _AddAddressPageState extends State<AddAddressPage> {
                           target: _latLng,
                           zoom: 17,
                         ),
+                        //mapType: MapType.satellite,
                         zoomControlsEnabled: false,
                         compassEnabled: false,
                         indoorViewEnabled: true,

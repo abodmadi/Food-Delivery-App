@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controllers/cart_controller.dart';
 import 'package:food_delivery_app/controllers/popular_product_controller.dart';
 import 'package:food_delivery_app/controllers/recommended_product_controller.dart';
+import 'package:food_delivery_app/controllers/user_controller.dart';
 //import 'package:food_delivery_app/pages/food/popular_food_detail_page.dart';
 //import 'package:food_delivery_app/pages/food/recommended_food_detail_page.dart';
 //import 'package:food_delivery_app/pages/home/food_page_body.dart';
@@ -32,16 +33,20 @@ class MyApp extends StatelessWidget {
       builder: (_) {
         return GetBuilder<RecommendedProductController>(
           builder: (_) {
-            return GetMaterialApp(
-              title: 'Flutter Demo',
-              debugShowCheckedModeBanner: false,
-              theme: ThemeData(
-                colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
-                useMaterial3: true,
-              ),
-              //home: SignInPage(),
-              initialRoute: RouteHelper.getSplashScreen(),
-              getPages: RouteHelper.routes,
+            return GetBuilder<UserController>(
+              builder: (_) {
+                return GetMaterialApp(
+                  title: 'Flutter Demo',
+                  debugShowCheckedModeBanner: false,
+                  theme: ThemeData(
+                    colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+                    useMaterial3: true,
+                  ),
+                  //home: SignInPage(),
+                  initialRoute: RouteHelper.getSplashScreen(),
+                  getPages: RouteHelper.routes,
+                );
+              }
             );
           },
         );
